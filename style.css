@@ -1,0 +1,111 @@
+body {
+    font-family: sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+/* アイデア出しボード全体のコンテナ */
+.brainstorm-container {
+    position: relative; /* 子要素を絶対配置するための基準点 */
+    width: 80vw; /* ブラウザ幅の80% */
+    /*height: 70vh;*/ /* ブラウザの高さの70% */
+    margin: 20px auto; /* 中央寄せ */
+    border: 1px solid #ccc;
+    
+    /* * ★★★ ここに背景画像のURLを指定 ★★★
+     * 例: url('https://example.com/image.jpg')
+     * 例: url('my-illustration.png') 
+     */
+    /*background-image: url('state-of-Kitano.png');*/
+    
+    background-size: contain; /* 画像がコンテナ全体を覆うように調整 */
+    background-position: center; /* 画像の中央を表示 */
+    /* 画像がタイル状に繰り返されるのを防ぐ */
+    background-repeat: no-repeat;
+}
+
+/* セルを配置するグリッドのコンテナ */
+.grid-overlay {
+    position: absolute; /* 親(container)を基準に配置 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    display: grid; /* グリッドレイアウトを使用 */
+    /* グリッドの分割数（JavaScriptで設定） */
+}
+
+/* 個々のセル */
+.cell {
+    /* * セルの背景色と透明度
+     * rgba(255, 255, 255, 0.8) は「白を80%の透明度で」という意味です。
+     * 0.8 の部分を 0.5 にすればより透明に、1.0 にすれば不透明になります。
+     */
+    background-color: rgba(255, 255, 255, 0);
+    
+    border: 1px solid #aaa; /* セルの境界線 */
+    padding: 8px;
+    font-size: 14px;
+    overflow: auto; /* 内容がはみ出たらスクロールバー */
+    cursor: text; /* マウスカーソルをテキスト入力モードに */
+    transition: background-color 0.2s; /* ホバー時のアニメーション */
+}
+
+/* セルをクリックして編集中のスタイル */
+.cell:focus {
+    background-color: rgba(255, 255, 255, 0.95); /* 少し濃くする */
+    outline: 2px solid #007bff; /* 青い枠線で強調 */
+}
+
+/* マウスが乗った時のスタイル */
+.cell:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.settings-panel {
+    margin-bottom: 20px; /* メインエリアとの間に余白 */
+    display: flex;
+    justify-content: center; /* 中央揃え */
+    align-items: center;
+    gap: 15px; /* 各要素（ラベル、入力欄、ボタン）の隙間 */
+}
+
+.settings-panel label {
+    font-weight: bold;
+}
+
+.settings-panel input[type="number"] {
+    width: 60px; /* 入力欄の幅 */
+    padding: 5px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.settings-panel button {
+    padding: 8px 15px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.settings-panel button:hover {
+    background-color: #0056b3;
+}
+
+.settings-panel .image-upload-label {
+    font-weight: bold;
+    margin-left: 10px; /* 更新ボタンとの間に少し隙間 */
+}
+.settings-panel input[type="file"] {
+    font-size: 14px;
+    /* (ファイル入力欄のデザインはブラウザ依存が強いため最小限の指定) */
+    border: 1px solid #ccc;
+    padding: 4px;
+    border-radius: 4px;
+    max-width: 200px;
+}
