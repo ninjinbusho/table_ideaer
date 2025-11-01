@@ -393,6 +393,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 「ファイル選択」で新しい画像が選ばれた時の処理
     imageUploadInput.addEventListener('change', function(event) {
+        
+        const beforecells = document.getElementsByClassName('cell');
+        console.log(beforecells.item(0).textContent);
+        for(let i=0; i<beforecells.length; i++){
+            if(beforecells[i].textContent != ""){
+                if(!window.confirm("セルに文字が入力されたままです。更新しますか？")){
+                    return;
+                }else{
+                    break;
+                }
+            }
+        }
+
         // 選択されたファイルを取得
         const file = event.target.files[0];
         
