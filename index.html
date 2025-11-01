@@ -3,24 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>アイデア出しグリッド</title>
+    <title>Table idear</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>アイデア出しボード</h1>
-    <p>背景画像の上にあるセルをクリックして、自由にアイデアを書き込んでください。</p>
+    <h1>Table idear</h1>
+    <p>背景画像を読み込んで（デフォルトでは架空地図の一部が読み込まれています）セルにアイデアを書き込みましょう。</p>
+    <p>できた表をcsv形式で保存できます。読み込んで続きから編集することもできます。</p>
+    <p>クリックでセルを選択、あるいはGoogle Spreadsheetのような矢印操作でセルを選択できます。</p>
+    <p>ページ内ダイアログが許可されていない場合、うまくいかない可能性があります。</p>
     <div class="settings-panel">
         <label for="input-rows">行数 (縦):</label>
-        <input type="number" id="input-rows" value="4" min="1" max="20">
+        <input type="number" id="input-rows" value="10" min="1" max="20">
         
         <label for="input-cols">列数 (横):</label>
-        <input type="number" id="input-cols" value="5" min="1" max="20">
+        <input type="number" id="input-cols" value="10" min="1" max="20">
         
         <button id="apply-grid-button">グリッドを更新</button>
         
         <label for="image-upload" class="image-upload-label">背景画像:</label>
         <input type="file" id="image-upload" accept="image/*">
+    </div>
+    <div class="settings-panel">
+        <div class="csv-actions">
+            <button id="export-csv-button">CSVエクスポート</button>
+            
+            <label for="csv-upload" class="csv-upload-label">CSVインポート:</label>
+            <input type="file" id="csv-upload" accept=".csv, text/csv">
+        </div>
     </div>
 
     <div class="brainstorm-container">

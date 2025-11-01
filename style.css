@@ -31,7 +31,6 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    
     display: grid; /* グリッドレイアウトを使用 */
     /* グリッドの分割数（JavaScriptで設定） */
 }
@@ -43,24 +42,34 @@ body {
      * 0.8 の部分を 0.5 にすればより透明に、1.0 にすれば不透明になります。
      */
     background-color: rgba(255, 255, 255, 0);
-    
     border: 1px solid #aaa; /* セルの境界線 */
-    padding: 8px;
-    font-size: 14px;
-    overflow: auto; /* 内容がはみ出たらスクロールバー */
-    cursor: text; /* マウスカーソルをテキスト入力モードに */
+    color: black;
+    padding: 1px;
+    overflow: hidden; /* 内容がはみ出たらスクロールバー */
+    cursor: default; /* デフォルトのカーソル */
+    outline: none; /* デフォルトのフォーカス枠線を消す */
     transition: background-color 0.2s; /* ホバー時のアニメーション */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* セルをクリックして編集中のスタイル */
+/* 編集中のスタイル */
+.cell[contenteditable="true"] {
+    background-color: rgba(255, 255, 255, 0.95);
+    outline: 2px solid #007bff; /* 青い枠線で強調 */
+    cursor: text; /* 編集モードのカーソル */
+}
+
+/* フォーカス中（移動モード）のスタイル */
 .cell:focus {
-    background-color: rgba(255, 255, 255, 0.95); /* 少し濃くする */
+    background-color: rgba(230, 245, 255, 0.9); /* 少し濃くする */
     outline: 2px solid #007bff; /* 青い枠線で強調 */
 }
 
 /* マウスが乗った時のスタイル */
 .cell:hover {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(230, 230, 230, 0.9);
 }
 
 .settings-panel {
@@ -107,5 +116,5 @@ body {
     border: 1px solid #ccc;
     padding: 4px;
     border-radius: 4px;
-    max-width: 200px;
+    max-width: 500px;
 }
